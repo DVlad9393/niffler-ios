@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71A952832E79E9B200D2E0AB /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A952822E79E9B200D2E0AB /* SignUpPage.swift */; };
+		71A952852E79E9FD00D2E0AB /* RegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A952842E79E9FD00D2E0AB /* RegistrationUITests.swift */; };
 		7468537A2B0CAE9700E48DFE /* NifflerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746853792B0CAE9700E48DFE /* NifflerApp.swift */; };
 		7468537C2B0CAE9700E48DFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468537B2B0CAE9700E48DFE /* ContentView.swift */; };
 		7468537E2B0CAE9700E48DFE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7468537D2B0CAE9700E48DFE /* Item.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71A952822E79E9B200D2E0AB /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
+		71A952842E79E9FD00D2E0AB /* RegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUITests.swift; sourceTree = "<group>"; };
 		746853762B0CAE9700E48DFE /* Niffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niffler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746853792B0CAE9700E48DFE /* NifflerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NifflerApp.swift; sourceTree = "<group>"; };
 		7468537B2B0CAE9700E48DFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				74BDA22C2C614D47001B7630 /* BasePage.swift */,
+				71A952822E79E9B200D2E0AB /* SignUpPage.swift */,
 				74BDA2372C615C11001B7630 /* LoginPage.swift */,
 				74BDA2352C615BFA001B7630 /* SpendsPage.swift */,
 				74BDA2332C615BDD001B7630 /* NewSpendPage.swift */,
@@ -170,6 +175,7 @@
 				74BDA2302C615BB7001B7630 /* BaseTestCase.swift */,
 				74D55B792BE12B9600AEF67D /* LoginUITests.swift */,
 				74BDA22E2C614D8D001B7630 /* SpendsUITests.swift */,
+				71A952842E79E9FD00D2E0AB /* RegistrationUITests.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -360,7 +366,9 @@
 				74BDA22F2C614D8D001B7630 /* SpendsUITests.swift in Sources */,
 				74BDA2312C615BB7001B7630 /* BaseTestCase.swift in Sources */,
 				74BDA2362C615BFA001B7630 /* SpendsPage.swift in Sources */,
+				71A952832E79E9B200D2E0AB /* SignUpPage.swift in Sources */,
 				74BDA2342C615BDD001B7630 /* NewSpendPage.swift in Sources */,
+				71A952852E79E9FD00D2E0AB /* RegistrationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

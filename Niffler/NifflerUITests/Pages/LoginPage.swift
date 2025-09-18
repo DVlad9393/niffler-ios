@@ -12,6 +12,16 @@ class LoginPage: BasePage {
         return self
     }
     
+    @discardableResult
+    func input_without_login(login: String, password: String) -> Self {
+        XCTContext.runActivity(named: "Авторизуюсь \(login), \(password)") { _ in
+            input(login: login)
+            input(password: password)
+            app.keyboards.buttons["Return"].tap()
+        }
+        return self
+    }
+    
     private func input(login: String) {
         XCTContext.runActivity(named: "Ввожу логин \(login)") { _ in
             app.textFields["userNameTextField"].tap()
@@ -27,7 +37,7 @@ class LoginPage: BasePage {
         }
     }
     
-    private func pressLoginButton() {
+    func pressLoginButton() {
         XCTContext.runActivity(named: "Жму кнопку логина") { _ in
             app.buttons["loginButton"].tap()
         }
@@ -59,4 +69,12 @@ class LoginPage: BasePage {
                           file: file, line: line)
         }
     }
+    
+    @discardableResult
+        func goToSignUp() -> SignUpPage {
+            XCTContext.runActivity(named: "Перехожу на экран регистрации") { _ in
+                app.staticTexts["Create new account"].tap()
+            }
+            return SignUpPage(app: app)
+        }
 }
