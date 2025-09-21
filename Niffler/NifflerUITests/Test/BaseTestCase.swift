@@ -8,6 +8,8 @@ class TestCase: XCTestCase {
         super.setUp()
         
         app = XCUIApplication()
+        app.launchArguments = ["RemoveAuthOnStart"]
+        app.launch()
     }
     
     override func tearDown() {
@@ -18,13 +20,6 @@ class TestCase: XCTestCase {
         newSpendPage = nil
         
         super.tearDown()
-    }
-    
-    func launchAppWithoutLogin() {
-        XCTContext.runActivity(named: "Запускаю приложение в режиме 'без авторизации'") { _ in
-            app.launchArguments = ["RemoveAuthOnStart"]
-            app.launch()
-        }
     }
     
     lazy var loginPage: LoginPage! = LoginPage(app: app)

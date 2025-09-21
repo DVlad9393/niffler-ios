@@ -3,7 +3,6 @@ import XCTest
 final class SpendsUITests: TestCase {
     
     func test_whenAddSpent_shouldShowSpendInList() {
-        launchAppWithoutLogin()
         
         // Arrange
         loginPage
