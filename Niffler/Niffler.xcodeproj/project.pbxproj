@@ -55,6 +55,9 @@
 /* Begin PBXFileReference section */
 		71A952822E79E9B200D2E0AB /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
 		71A952842E79E9FD00D2E0AB /* RegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUITests.swift; sourceTree = "<group>"; };
+		71F460CC2E80232500F6A4E6 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		71F460CD2E80232500F6A4E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		71F460CE2E8023A300F6A4E6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		746853762B0CAE9700E48DFE /* Niffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niffler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746853792B0CAE9700E48DFE /* NifflerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NifflerApp.swift; sourceTree = "<group>"; };
 		7468537B2B0CAE9700E48DFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +117,9 @@
 		7468536D2B0CAE9700E48DFE = {
 			isa = PBXGroup;
 			children = (
+				71F460CE2E8023A300F6A4E6 /* .gitignore */,
+				71F460CC2E80232500F6A4E6 /* LICENSE */,
+				71F460CD2E80232500F6A4E6 /* README.md */,
 				749E20F32B0CAFD60045F4E3 /* Niffler.xctestplan */,
 				749E20F22B0CAF1D0045F4E3 /* Api */,
 				746853782B0CAE9700E48DFE /* Niffler */,
