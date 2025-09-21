@@ -7,11 +7,11 @@ final class SpendsUITests: TestCase {
         
         // Arrange
         loginPage
-            .input(login: "stage", password: "12345")
+            .input(login: "stage258", password: "2345")
         
         // Act
         spendsPage
-            .waitSpendsScreen()
+            .assertIsSpendsPageOpened()
             .addSpent()
         
         let title = UUID.randomPart

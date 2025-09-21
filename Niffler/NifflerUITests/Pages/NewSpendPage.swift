@@ -3,28 +3,36 @@ import XCTest
 class NewSpendPage: BasePage {
     
     func inputSpent(title: String) {
-        inputAmount()
-        .selectCategory()
-        .inputDescription(title)
-//        .swipeToAddSpendsButton()
-        .pressAddSpend()
+        XCTContext.runActivity(named: "Ввод траты") {_ in
+            inputAmount()
+                .selectCategory()
+                .inputDescription(title)
+            //        .swipeToAddSpendsButton()
+                .pressAddSpend()
+        }
     }
     
     func inputAmount() -> Self {
-        app.textFields["amountField"].typeText("14")
-        return self
+        XCTContext.runActivity(named: "Ввод суммы") {_ in
+            app.textFields["amountField"].typeText("14")
+            return self
+        }
     }
     
     func selectCategory() -> Self {
-        app.buttons["Select category"].tap()
-        app.buttons["Рыбалка"].tap() // TODO: Bug
-        return self
+        XCTContext.runActivity(named: "Выбор категории") {_ in
+            app.buttons["Select category"].tap()
+            app.buttons["Рыбалка"].tap() // TODO: Bug
+            return self
+        }
     }
     
     func inputDescription(_ title: String) -> Self {
-        app.textFields["descriptionField"].tap()
-        app.textFields["descriptionField"].typeText(title)
-        return self
+        XCTContext.runActivity(named: "Ввод описания") {_ in
+            app.textFields["descriptionField"].tap()
+            app.textFields["descriptionField"].typeText(title)
+            return self
+        }
     }
     
 //    func swipeToAddSpendsButton() -> Self {
@@ -35,6 +43,8 @@ class NewSpendPage: BasePage {
 //    }
     
     func pressAddSpend() {
-        app.buttons["Add"].tap()
+        XCTContext.runActivity(named: "тап на кнопку \"Добавить") {_ in
+            app.buttons["Add"].tap()
+        }
     }
 }
