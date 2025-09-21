@@ -10,6 +10,12 @@ class SpendsPage: BasePage {
         }
     }
     
+    func assertIsSpendsPageOpened(file: StaticString = #filePath, line: UInt = #line) {
+        XCTContext.runActivity(named: "Проверка открытия экрана с тратами") { _ in
+            XCTAssertTrue(app.staticTexts["Statistics"].waitForExistence(timeout: 5))
+        }
+    }
+    
     @discardableResult
     func waitSpendsScreen(file: StaticString = #filePath, line: UInt = #line) -> Self {
         let isFound = app.firstMatch

@@ -102,6 +102,7 @@ extension SignUpView {
                     hideSignup()
                 } label: {
                     Text("Log in")
+                        .accessibilityIdentifier(SignUpViewIDs.loginButton.rawValue)
                 }
                 
             } message: {
