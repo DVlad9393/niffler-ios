@@ -2,10 +2,10 @@ import XCTest
 
 class NewSpendPage: BasePage {
     
-    func inputSpent(title: String) {
+    func inputSpent(title: String, category_name: String) {
         XCTContext.runActivity(named: "Ввод траты") {_ in
             inputAmount()
-                .selectCategory()
+                .selectCategory(category_name: category_name)
                 .inputDescription(title)
             //        .swipeToAddSpendsButton()
                 .pressAddSpend()
@@ -19,10 +19,31 @@ class NewSpendPage: BasePage {
         }
     }
     
-    func selectCategory() -> Self {
+    func selectCategory(category_name: String) -> Self {
         XCTContext.runActivity(named: "Выбор категории") {_ in
             app.buttons["Select category"].tap()
-            app.buttons["Рыбалка"].tap() // TODO: Bug
+            let expextedAddCategoryPopup = app.alerts["Add category"].waitForExistence(timeout: 1)
+            let alert = app.alerts["Add category"]
+            
+            
+            if expextedAddCategoryPopup{
+                let field = alert.textFields["Name"].exists
+                    ? alert.textFields["Name"]
+                    : alert.textFields.firstMatch
+                XCTAssertTrue(field.exists, "Поле ввода в алерте не найдено", file: #file, line: #line)
+
+                // 3) Вводим текст
+                field.tap()
+                field.typeText(category_name)
+
+                // 4) Жмём кнопку Add (внутри алерта)
+                let addButton = alert.buttons["Add"]
+                XCTAssertTrue(addButton.exists, "Кнопка 'Add' в алерте не найдена", file: #file, line: #line)
+                addButton.tap()
+
+            }
+            else {
+                app.buttons[category_name].tap()} // TODO: Bug
             return self
         }
     }
