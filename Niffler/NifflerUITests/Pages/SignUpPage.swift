@@ -1,65 +1,79 @@
+//
+//  SignUpPage.swift
+//  Niffler
+//
+//  Created by Владислав Дурицкий on 16.09.2025.
+//
+
+
 // SignUpPage.swift
 import XCTest
 
 class SignUpPage: BasePage {
 
-    // MARK: - Locators (проверь id в приложении)
-    private var loginField: XCUIElement { app.textFields["signUpLoginTextField"] }
-    private var passwordField: XCUIElement { app.secureTextFields["signUpPasswordTextField"] }
-    private var confirmField: XCUIElement { app.secureTextFields["signUpConfirmPasswordTextField"] }
-    private var signUpButton: XCUIElement { app.buttons["signUpButton"] }
-    private var errorLabel: XCUIElement { app.staticTexts["SignUpError"] }
+    private var loginField: XCUIElement { app.textFields["signUp_userNameTextField"] }
+    private var passwordButton: XCUIElement { app.buttons["signUp_passwordTextField"] }
+    private var passwordField: XCUIElement { app.textFields["signUp_passwordTextField"] }
+    private var confirmButton: XCUIElement { app.buttons["signUp_confirmPasswordTextField"] }
+    private var confirmField: XCUIElement { app.textFields["signUp_confirmPasswordTextField"] }
+    private var signUpButton: XCUIElement { app.buttons["Sign Up"] }
+    private var errorLabel: XCUIElement { app.staticTexts["Не удалось создать пользователя"] }
+    private var congratRegistrationText: XCUIElement { app.staticTexts["Congratulations!"] }
+    private var successRegistrationText: XCUIElement { app.staticTexts[" You've registered!"] }
+    private var loginButton: XCUIElement { app.buttons["signUp_loginButton"].firstMatch }
 
     // MARK: - Actions
     @discardableResult
     func input(login: String, password: String, confirm: String) -> Self {
         XCTContext.runActivity(named: "Заполняю форму регистрации") { _ in
+            print(app.debugDescription)
             loginField.tap()
             loginField.typeText(login)
-
+//            print(app.debugDescription)
+            passwordButton.tap()
             passwordField.tap()
             passwordField.typeText(password)
-
+            
+            confirmButton.tap()
             confirmField.tap()
             confirmField.typeText(confirm)
+            app.keyboards.buttons["Return"].tap()
         }
         return self
     }
 
     @discardableResult
-    func submit() -> Self {
+    func submit() -> LoginPage {
         XCTContext.runActivity(named: "Жму Sign Up") { _ in
+            XCTAssertTrue(signUpButton.waitForExistence(timeout: 5))
             signUpButton.tap()
+            XCTAssertTrue(congratRegistrationText.waitForExistence(timeout: 5))
+            XCTAssertTrue(successRegistrationText.waitForExistence(timeout: 5))
+            XCTAssertTrue(loginButton.waitForExistence(timeout: 5))
+            loginButton.tap()
         }
-        return self
+        return LoginPage(app: app)
     }
 
-    // MARK: - Asserts
     func assertPrefilled(login expectedLogin: String,
-                         passwordLen expectedLen: Int,
-                         file: StaticString = #filePath, line: UInt = #line) {
+                         passwordLen expectedLen: Int) {
         XCTContext.runActivity(named: "Проверяю перенесённые данные") { _ in
-            XCTAssertEqual(loginField.value as? String, expectedLogin,
-                           "Логин не перенесён", file: file, line: line)
+            
+            passwordButton.tap()
+            passwordField.tap()
+            XCTAssertTrue(loginField.waitForExistence(timeout: 3), "Поле логина не появилось")
+            XCTAssertTrue(passwordField.waitForExistence(timeout: 3), "Поле пароля не появилось")
 
-            // secureTextFields не отдают пароль, но отдают строку из •••
-            let actual = (passwordField.value as? String) ?? ""
-            XCTAssertEqual(actual.count, expectedLen,
-                           "Длина пароля не совпадает (перенос пароля мог не сработать)",
-                           file: file, line: line)
+            let loginValue = (loginField.value as? String) ?? ""
+            XCTAssertEqual(loginValue, expectedLogin, "Логин не перенесён")
+
+            let raw = (passwordField.value as? String) ?? ""
+            let bulletsCount = raw.filter { $0 == "•" }.count
+            let effectiveLength = bulletsCount > 0 ? bulletsCount : raw.count
+
+            XCTAssertEqual(effectiveLength, expectedLen,
+                "Длина пароля не совпадает (перенос/маска могли не сработать). raw='\(raw)'")
         }
     }
 
-    func assertNoError(file: StaticString = #filePath, line: UInt = #line) {
-        let appeared = errorLabel.waitForExistence(timeout: 2)
-        XCTAssertFalse(appeared, "Появилась ошибка регистрации: \(errorLabel.label)",
-                       file: file, line: line)
-    }
-
-    func assertErrorShown(timeout: TimeInterval = 3,
-                          file: StaticString = #filePath, line: UInt = #line) {
-        let appeared = errorLabel.waitForExistence(timeout: timeout)
-        XCTAssertTrue(appeared, "Ожидали ошибку регистрации, но не увидели",
-                      file: file, line: line)
-    }
 }
