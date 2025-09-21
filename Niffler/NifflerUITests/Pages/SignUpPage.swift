@@ -19,8 +19,8 @@ class SignUpPage: BasePage {
     private var signUpButton: XCUIElement { app.buttons["Sign Up"] }
     private var errorLabel: XCUIElement { app.staticTexts["Не удалось создать пользователя"] }
     private var congratRegistrationText: XCUIElement { app.staticTexts["Congratulations!"] }
-    private var succesRegistrationText: XCUIElement { app.staticTexts[" You've registered!"] }
-    private var loginButon: XCUIElement { app.buttons["signUp_loginButton"] }
+    private var successRegistrationText: XCUIElement { app.staticTexts[" You've registered!"] }
+    private var loginButton: XCUIElement { app.buttons["signUp_loginButton"].firstMatch }
 
     // MARK: - Actions
     @discardableResult
@@ -48,9 +48,9 @@ class SignUpPage: BasePage {
             XCTAssertTrue(signUpButton.waitForExistence(timeout: 5))
             signUpButton.tap()
             XCTAssertTrue(congratRegistrationText.waitForExistence(timeout: 5))
-            XCTAssertTrue(succesRegistrationText.waitForExistence(timeout: 5))
-            XCTAssertTrue(loginButon.waitForExistence(timeout: 5))
-            loginButon.tap()
+            XCTAssertTrue(successRegistrationText.waitForExistence(timeout: 5))
+            XCTAssertTrue(loginButton.waitForExistence(timeout: 5))
+            loginButton.tap()
         }
         return LoginPage(app: app)
     }
