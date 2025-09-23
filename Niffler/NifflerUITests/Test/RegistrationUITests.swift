@@ -12,7 +12,6 @@ import XCTest
 final class RegistrationUITests: TestCase {
 
     func test_signUp_success() throws {
-        launchAppWithoutLogin()
 
         let login = "new_user_\(Int(Date().timeIntervalSince1970))"
         let pass  = "Qwer!2345"
@@ -27,7 +26,6 @@ final class RegistrationUITests: TestCase {
     }
 
     func test_loginFields_carryOver_toSignUp() throws {
-        launchAppWithoutLogin()
 
         let login = "prefill_user"
         let pass  = "12345"
