@@ -22,6 +22,11 @@ final class SpendsUITests: TestCase {
         // Assert
         spendsPage
             .assertNewSpendIsShown(title: title)
+        spendsPage
+            .openProfile()
+        profilePage
+            .assertIsProfilePageOpened()
+            .assertAddedCategory(expectedCategory: "Рыбалка")
     }
     
     func test_whenAddFirstSpent_shouldShowSpendInList() {
@@ -49,6 +54,49 @@ final class SpendsUITests: TestCase {
         // Assert
         spendsPage
             .assertNewSpendIsShown(title: title)
+        spendsPage
+            .openProfile()
+        profilePage
+            .assertIsProfilePageOpened()
+            .assertAddedCategory(expectedCategory: categoryName)
+    }
+    
+    func test_deleteCategory() {
+        
+        // Arrange
+        let login = "new_user_\(Int(Date().timeIntervalSince1970))"
+        let pass  = "Qwer!2345"
+
+        loginPage
+            .goToSignUp()
+            .input(login: login, password: pass, confirm: pass)
+            .submit()
+            .pressLoginButton()
+        
+        // Act
+        spendsPage
+            .assertIsSpendsPageOpened()
+            .assertIsSpendsViewNotAppeared()
+            .addSpent()
+        
+        let title = UUID.randomPart
+        newSpendPage
+            .inputSpent(title: title, category_name: categoryName)
+        
+        // Assert
+        spendsPage
+            .assertNewSpendIsShown(title: title)
+        spendsPage
+            .openProfile()
+        profilePage
+            .assertIsProfilePageOpened()
+            .assertAddedCategory(expectedCategory: categoryName)
+        profilePage
+            .deleteCategory(category: categoryName)
+            .closeProfilePage()
+            .addSpent()
+        newSpendPage
+            .assertCategoryNotExist(category_name: categoryName)
     }
 }
 

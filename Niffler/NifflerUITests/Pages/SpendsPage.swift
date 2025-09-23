@@ -28,7 +28,6 @@ class SpendsPage: BasePage {
     func assertIsSpendsPageOpened(file: StaticString = #filePath, line: UInt = #line) -> Self{
         XCTContext.runActivity(named: "Проверка открытия экрана с тратами") { _ in
             XCTAssertTrue(app.staticTexts["Statistics"].waitForExistence(timeout: 5))
-//            XCTAssertTrue(app.other["spendsList"].waitForExistence(timeout: 5))
         }
             return self
     }
@@ -50,8 +49,20 @@ class SpendsPage: BasePage {
     
     @discardableResult
     func addSpent() -> Self {
-        XCTContext.runActivity(named: "Перехожу на экран регистрации"){_ in
+        XCTContext.runActivity(named: "Тап на кнопку добавления траты"){_ in
             app.buttons["addSpendButton"].tap()
+        }
+            return self
+    }
+    
+    @discardableResult
+    func openProfile() -> Self {
+        XCTContext.runActivity(named: "Открыть профиль"){_ in
+            app.images["ic_menu"].firstMatch.press(forDuration: 0.1)
+            sleep(1)
+            XCTAssertTrue(app.buttons["Profile"].firstMatch.waitForExistence(timeout: 2), file: #file, line: #line)
+            XCTAssertTrue(app.buttons["Profile"].firstMatch.isEnabled, file: #file, line: #line)
+            app.buttons["Profile"].firstMatch.tap()
         }
             return self
     }

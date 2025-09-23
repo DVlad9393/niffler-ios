@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71A132312E81FF190056472F /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A132302E81FF090056472F /* ProfilePage.swift */; };
 		71A952832E79E9B200D2E0AB /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A952822E79E9B200D2E0AB /* SignUpPage.swift */; };
 		71A952852E79E9FD00D2E0AB /* RegistrationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A952842E79E9FD00D2E0AB /* RegistrationUITests.swift */; };
 		7468537A2B0CAE9700E48DFE /* NifflerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746853792B0CAE9700E48DFE /* NifflerApp.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		71A132302E81FF090056472F /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		71A952822E79E9B200D2E0AB /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
 		71A952842E79E9FD00D2E0AB /* RegistrationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUITests.swift; sourceTree = "<group>"; };
 		746853762B0CAE9700E48DFE /* Niffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Niffler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 		74BDA2322C615BD8001B7630 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				71A132302E81FF090056472F /* ProfilePage.swift */,
 				74BDA22C2C614D47001B7630 /* BasePage.swift */,
 				71A952822E79E9B200D2E0AB /* SignUpPage.swift */,
 				74BDA2372C615C11001B7630 /* LoginPage.swift */,
@@ -362,6 +365,7 @@
 			files = (
 				74D55B7A2BE12B9600AEF67D /* LoginUITests.swift in Sources */,
 				74BDA2382C615C11001B7630 /* LoginPage.swift in Sources */,
+				71A132312E81FF190056472F /* ProfilePage.swift in Sources */,
 				74BDA22D2C614D47001B7630 /* BasePage.swift in Sources */,
 				74BDA22F2C614D8D001B7630 /* SpendsUITests.swift in Sources */,
 				74BDA2312C615BB7001B7630 /* BaseTestCase.swift in Sources */,
