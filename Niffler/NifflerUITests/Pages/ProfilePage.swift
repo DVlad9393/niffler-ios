@@ -55,8 +55,8 @@ class ProfilePage: BasePage {
             return ProfilePage (app: app)
     }
     
-    
-    func assertAddedCategory(expectedCategory: String) {
+    @discardableResult
+    func assertAddedCategory(expectedCategory: String) -> Self {
         XCTContext.runActivity(named: "Проверяю добавленную категорию") { _ in
             
             let isFound = app.firstMatch
@@ -65,7 +65,7 @@ class ProfilePage: BasePage {
                 .waitForExistence(timeout: 1)
             
             XCTAssertTrue(isFound, file: #file, line: #line)
-
+            return self
         }
     }
 
