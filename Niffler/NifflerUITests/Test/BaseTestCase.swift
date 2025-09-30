@@ -21,7 +21,6 @@ class TestCase: XCTestCase {
         profilePage = nil
         signUpPage = nil
         
-        
         super.tearDown()
     }
     

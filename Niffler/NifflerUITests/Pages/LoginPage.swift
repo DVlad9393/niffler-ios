@@ -71,10 +71,10 @@ class LoginPage: BasePage {
     }
     
     @discardableResult
-        func goToSignUp() -> SignUpPage {
-            XCTContext.runActivity(named: "Перехожу на экран регистрации") { _ in
-                app.staticTexts["Create new account"].tap()
-            }
-            return SignUpPage(app: app)
+    func goToSignUp() -> SignUpPage {
+        XCTContext.runActivity(named: "Перехожу на экран регистрации") { _ in
+            app.staticTexts["Create new account"].tap()
         }
+        return SignUpPage(app: app)
+    }
 }

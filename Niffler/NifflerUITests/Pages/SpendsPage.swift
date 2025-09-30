@@ -67,7 +67,7 @@ class SpendsPage: BasePage {
             return self
     }
     
-    func assertNewSpendIsShown(title: String, file: StaticString = #filePath, line: UInt = #line) {
+    func assertNewSpendIsShown(title: String, file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTContext.runActivity(named: "Проверяю наличие новой траты") {_ in
             
             let isFound = app.firstMatch
@@ -76,6 +76,7 @@ class SpendsPage: BasePage {
                 .waitForExistence(timeout: 1)
             
             XCTAssertTrue(isFound, file: file, line: line)
+            return self
         }
     }
 }

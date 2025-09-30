@@ -22,7 +22,6 @@ final class SpendsUITests: TestCase {
         // Assert
         spendsPage
             .assertNewSpendIsShown(title: title)
-        spendsPage
             .openProfile()
         profilePage
             .assertIsProfilePageOpened()
@@ -54,7 +53,6 @@ final class SpendsUITests: TestCase {
         // Assert
         spendsPage
             .assertNewSpendIsShown(title: title)
-        spendsPage
             .openProfile()
         profilePage
             .assertIsProfilePageOpened()
@@ -86,12 +84,10 @@ final class SpendsUITests: TestCase {
         // Assert
         spendsPage
             .assertNewSpendIsShown(title: title)
-        spendsPage
             .openProfile()
         profilePage
             .assertIsProfilePageOpened()
             .assertAddedCategory(expectedCategory: categoryName)
-        profilePage
             .deleteCategory(category: categoryName)
             .closeProfilePage()
             .addSpent()
